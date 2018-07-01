@@ -58,11 +58,13 @@ The test `ProjectTwoTest.secondTestOfProjectTwo()` processes a file that is read
 ![results of project1](doc/images/resultProj1.png)
 
 When executing the tests of `project-one`, the tests of `ProjectTwoTest` are detected and executed as well. 
-In this case the test `ProjectTwoTest.secondTestOfProjectTwo()` will fail since it is executed using the classpath of `project-one`, and hence the file in `project-two/src/main/resources` will be missing i classpath.
+In this case the test `ProjectTwoTest.secondTestOfProjectTwo()` will fail since it is executed using the classpath of `project-one`, and hence the file in `project-two/src/main/resources` will be missing.
 
 ## Workaround
 
-One possible workaround is to edit the Run/Debug Configuration to explicitly point out the package to include tests from:
+One possible workaround is to edit the Run/Debug Configuration to explicitly point out the package to include tests from. 
+
+Even though such a workaround will work, I think the best option would be if JetBrains could look into the matter and make IntelliJ keep the behavior from junit4 also when using the junit5 engine/platform/launcher. 
 
 ![workaround](doc/images/workaround.png)
 
