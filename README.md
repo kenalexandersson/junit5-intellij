@@ -41,4 +41,28 @@ When executing the tests of `project-one` in IntelliJ by selecting **project-one
 
 The actual outcome is that the tests of both `ProjectOneTest` and `ProjectTwoTest` are executed.
 
+Note that the default Run/Debug Configurations are used here, without modifications.
+
 When running the same setup in Intellij using junit4, it works as expected, tests in `ProjectOneTest` are the only ones that are executed. The same goes if the test are executed via Maven surefire plugin.
+
+
+**Result of project-two -> Run 'All Tests'**
+
+![results of project2](doc/images/resultProj2.png)
+
+When the tests of `project-two` are executed, both test cases are successful.
+The test `ProjectTwoTest.secondTestOfProjectTwo()` processes a file that is read from classpath, originally located in `project-two/src/main/resources`.
+
+**Result of project-one -> Run 'All Tests'**
+
+![results of project1](doc/images/resultProj1.png)
+
+When executing the tests of `project-one`, the tests of `ProjectTwoTest` are detected and executed as well. 
+In this case the test `ProjectTwoTest.secondTestOfProjectTwo()` will fail since it is executed using the classpath of `project-one`, and hence the file in `project-two/src/main/resources` will be missing i classpath.
+
+## Workaround
+
+One possible workaround is to edit the Run/Debug Configuration to explicitly point out the package to include tests from:
+
+![workaround](doc/images/workaround.png)
+
