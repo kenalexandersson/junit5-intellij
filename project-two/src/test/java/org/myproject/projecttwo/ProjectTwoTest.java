@@ -22,26 +22,4 @@ class ProjectTwoTest {
         TestPerson testPerson = TestPerson.of(firstName);
         assertEquals(firstName, testPerson.getFirstName());
     }
-
-    @Test
-    void secondTestOfProjectTwo() throws URISyntaxException, IOException {
-        String expectedData = "Some text in fileTest.txt";
-
-        String fileName = "fileTest.txt";
-        URL resourceUrl = getClass().getClassLoader().getResource(fileName);
-
-        if (resourceUrl != null) {
-            Path path = Paths.get(resourceUrl.toURI());
-
-            StringBuilder data = new StringBuilder();
-            Stream<String> lines = Files.lines(path);
-            lines.forEach(line -> data.append(line).append("\n"));
-            lines.close();
-
-            assertEquals(expectedData, data.toString().trim());
-
-        } else {
-            fail(String.format("Failed to handle file %s (couldn't be found on classpath)", fileName));
-        }
-    }
 }
